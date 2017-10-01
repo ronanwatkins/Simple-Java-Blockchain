@@ -6,15 +6,23 @@ import org.json.JSONObject;
  */
 public class Block {
     private int index;
-    public String timestamp;
+    private String timestamp;
     private String data;
-    public String previousHash;
-    public String hash;
+    private String previousHash;
+    private String hash;
 
     public Block (int index, String timestamp, String data, String previousHash ) {
         this.index = index;
         this.timestamp = timestamp;
         this.data = data;
+        this.previousHash = previousHash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
+
+    public void setPreviousHash(String previousHash) {
         this.previousHash = previousHash;
     }
 
