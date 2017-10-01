@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -7,12 +9,15 @@ public class Test {
     public static void main(String[] args) {
         Blockchain ronanCoin = new Blockchain();
         Scanner sc = new Scanner(System.in);
-        String data = "{}";
+        String data;
+        String date;
         System.out.println(ronanCoin);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
         while(true) {
             System.out.print("Enter data for new coin: ");
             data = sc.nextLine();
-            ronanCoin.addBlock(new Block(1, "10/07/2017", data, "0"));
+            date = simpleDateFormat.format(new Date());
+            ronanCoin.addBlock(new Block(1, date, data, "0"));
             System.out.println(ronanCoin);
         }
     }
