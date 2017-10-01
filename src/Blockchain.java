@@ -1,7 +1,8 @@
 import org.json.JSONArray;
 import org.json.JSONObject;
-
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by Ronan Watkins on 21/08/2017.
@@ -14,7 +15,9 @@ public class Blockchain {
     }
 
     public Block createGenesisBlock() {
-        return new Block(0, "01/01/2017", "Genesis block", "0");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String date = simpleDateFormat.format(new Date());
+        return new Block(0, date, "Genesis block", "0");
     }
 
     public Block getLatestBlock() {
@@ -22,8 +25,8 @@ public class Blockchain {
     }
 
     public void addBlock(Block newBlock) {
-        newBlock.previousHash = this.getLatestBlock().calculateHash();
-        newBlock.hash = newBlock.calculateHash();
+        newBlock.setPreviousHash(this.getLatestBlock().calculateHash());
+        newBlock.setHash(newBlock.calculateHash());
         this.chain.add(newBlock);
     }
 
